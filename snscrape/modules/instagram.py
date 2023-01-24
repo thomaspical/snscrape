@@ -50,7 +50,7 @@ class User(snscrape.base.Entity):
 class _InstagramCommonScraper(snscrape.base.Scraper):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		self._headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+		# self._headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 		self._initialPage = None
 
 	def _response_to_items(self, response):

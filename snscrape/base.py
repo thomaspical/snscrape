@@ -168,9 +168,10 @@ class Scraper:
 
 	name = None
 
-	def __init__(self, *, retries = 3, proxies = None):
+	def __init__(self, *, retries = 3, proxies = None, headers = None):
 		self._retries = retries
 		self._proxies = proxies
+		self._headers = headers
 		self._session = requests.Session()
 		self._session.mount('https://', _HTTPSAdapter())
 
@@ -194,6 +195,7 @@ class Scraper:
 
 	def _request(self, method, url, params = None, data = None, headers = None, timeout = 10, responseOkCallback = None, allowRedirects = True, proxies = None):
 		proxies = proxies or self._proxies or {}
+		headers = headers or self._headers
 		errors = []
 		for attempt in range(self._retries + 1):
 			# The request is newly prepared on each retry because of potential cookie updates.
